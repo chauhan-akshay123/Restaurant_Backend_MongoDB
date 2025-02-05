@@ -57,12 +57,20 @@ The server will be available at `http://localhost:3000`.
 }
 ```
 
-### Get Restaurants
+### Get All Restaurants
 - **GET** `/restaurants` - Get all restaurants
-- **GET** `/restaurants/:restaurantName` - Get restaurant by name
-- **GET** `/restaurants/directory/:phoneNumber` - Get restaurant by phone number
-- **GET** `/restaurants/cuisine/:cuisineName` - Get restaurants by cuisine
-- **GET** `/restaurants/location/:location` - Get restaurants by location
+### Get a Restaurant by Name
+- **Endpoint**: ``GET /restaurants/:restaurantName``
+- **Example**: ``GET /restaurants/The Spicy Grill``
+### Get a Restaurant by Phone Number
+- **Endpoint**: ``GET /restaurants/directory/:phoneNumber``
+- **Example**: ``GET /restaurants/directory/1234567890``
+### Get Restaurants by Cuisine 
+- **Endpoint**: ``GET /restaurants/cuisine/:cuisineName``
+- **Example**: `` GET /restaurants/cuisine/Indian``
+### Get Restaurants by location
+- **Endpoint**: ``GET /restaurants/location/:location``
+- **Example**: ``GET /restaurants/location/Downtown``
 
 ### Update Restaurant
 - **PUT** `/restaurants/update/:restaurantId`
@@ -95,70 +103,3 @@ The server will be available at `http://localhost:3000`.
 | menuUrl | String | Yes | Link to the menu |
 | photos | Array | No | List of photo URLs |
 
-## Example API Requests
-
-### Create a Restaurant
-```bash
-curl -X POST http://localhost:3000/restaurants \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "The Spicy Grill",
-    "cuisine": ["Indian"],
-    "location": "Downtown"
-  }'
-```
-
-### Get All Restaurants
-```bash
-curl http://localhost:3000/restaurants
-```
-
-### Get Restaurant by Name
-```bash
-curl http://localhost:3000/restaurants/The%20Spicy%20Grill
-```
-
-### Update Restaurant
-```bash
-curl -X PUT http://localhost:3000/restaurants/update/640c3e77f1a4 \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "The New Spicy Grill",
-    "rating": 4.8
-  }'
-```
-
-### Delete Restaurant
-```bash
-curl -X DELETE http://localhost:3000/restaurants/640c3e77f1a4
-```
-
-## Response Examples
-
-### Successful Creation
-```json
-{
-  "message": "Restaurant added successfully",
-  "savedRestaurant": {
-    "name": "The Spicy Grill",
-    "cuisine": ["Indian"],
-    "location": "Downtown",
-    "rating": 4.5
-  }
-}
-```
-
-### Get Restaurant
-```json
-{
-  "_id": "640c3e77f1a4",
-  "name": "The Spicy Grill",
-  "cuisine": ["Indian"],
-  "location": "Downtown, New York",
-  "rating": 4.5
-}
-```
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
